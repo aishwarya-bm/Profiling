@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { dummyData } from "../data/DummyData";
-import "./../styles/Main.css";
+import { FixedSizeList as List } from "react-window";
 import EnterInput from "./EnterInput";
+import "./../styles/Main.css";
+
 export default function MainPage() {
   const [selected, setSelected] = useState("");
 
@@ -9,14 +11,34 @@ export default function MainPage() {
     setSelected(e.target.innerText);
   };
 
+  const Row = ({ index, style }) => {
+    const { id, title } = dummyData[index] || {};
+
+    return (
+      <div style={style} key={title + id}>
+        <div
+          onClick={handleDropdownChange}
+          className={selected === title ? "bg-blue" : "bg-transparent"}
+        >
+          {title}
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="dropdown-container">
-      <EnterInput/>
-      {
-        dummyData.map(({title})=>{
-          return <div key={title} onClick={handleDropdownChange} className={selected === title ? "bg-blue":"bg-transparent"} >{title}</div>
-        })
-      }
+      <EnterInput />
+
+      <List
+        className="List"
+        height={800}
+        itemCount={dummyData.length}
+        itemSize={20}
+        width={800}
+      >
+        {Row}
+      </List>
     </div>
-  )
+  );
 }
