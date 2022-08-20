@@ -6,23 +6,17 @@ export default function MainPage() {
   const [selected, setSelected] = useState("");
 
   const handleDropdownChange = (e) => {
-    setSelected(e.target.value);
+    setSelected(e.target.innerText);
   };
 
   return (
     <div className="dropdown-container">
-      <select name="item" value={selected} onChange={handleDropdownChange}>
-        {dummyData.map((p) => {
-          return (
-            <option value={p.title} key={p.title}>
-              {p.title}
-            </option>
-          );
-        })}
-      </select>
-
-      {selected && "You selected - " + selected}
       <EnterInput/>
+      {
+        dummyData.map(({title})=>{
+          return <div key={title} onClick={handleDropdownChange} className={selected === title ? "bg-blue":"bg-transparent"} >{title}</div>
+        })
+      }
     </div>
-  );
+  )
 }

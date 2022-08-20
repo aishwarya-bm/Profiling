@@ -8,7 +8,7 @@ export default function EnterInput() {
   };
   return (
     <>
-      <input type="text" value={sometext} onChange={handleTextChange} />
+      <input type="text" value={sometext} onChange={handleTextChange} placeholder="Search..." />
       {sometext && "You typed - " + sometext}
     </>
   );
