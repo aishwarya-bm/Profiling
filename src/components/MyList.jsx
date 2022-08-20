@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { dummyData } from "../data/DummyData";
 
 function MyList() {
@@ -10,18 +10,19 @@ function MyList() {
 
   return (
     <>
-      {
-        dummyData.map(({title},idx)=>{
-            return <div
+      {dummyData.map(({ title }, idx) => {
+        return (
+          <div
             onClick={handleDropdownChange}
-            className={selected === title ? "bg-blue" : "bg-transparent"} key={title}
+            className={selected === title ? "bg-blue" : "bg-transparent"}
+            key={title}
           >
             {idx + 1}
             {"  " + title}
           </div>
-        })
-      }
+        );
+      })}
     </>
   );
 }
-export default MyList;
+export default React.memo(MyList);
