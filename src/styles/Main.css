@@ -16,3 +16,11 @@ select,input{
 .bg-transparent{
     background-color: transparent;
 }
+
+.counter{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+    border: 1px solid blue;
+}
