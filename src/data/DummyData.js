@@ -1,4 +1,4 @@
-export const photos = [
+export const dummyData = [
     {
       "albumId": 1,
       "id": 1,

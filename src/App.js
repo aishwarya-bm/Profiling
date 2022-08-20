@@ -1,10 +1,11 @@
-import Photos from './components/Photos';
+import ShowDropdown from './components/ShowDropdown';
+import './styles/App.css'
 
 function App() {
   
   return (
     <div className="App">
-      <Photos/>
+      <ShowDropdown/>
     </div>
   );
 }
